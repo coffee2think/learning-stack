@@ -1,0 +1,69 @@
+# =========================
+# OS
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
+# IDE
+# =========================
+.idea/
+*.iml
+.vscode/
+
+# =========================
+# Java / Spring Boot
+# =========================
+backend/.gradle/
+backend/build/
+backend/out/
+
+# Gradle wrapper jar는 커밋해야 하므로 제외하지 않음
+# !backend/gradle/wrapper/gradle-wrapper.jar
+
+# Logs
+*.log
+
+# =========================
+# Node / React / Vite
+# =========================
+frontend/node_modules/
+frontend/dist/
+
+# Vite / Node cache
+frontend/.vite/
+frontend/.cache/
+
+# =========================
+# Environment variables
+# =========================
+.env
+.env.*
+!.env.example
+
+backend/.env
+frontend/.env
+
+# =========================
+# Local database / runtime
+# =========================
+*.db
+*.sqlite
+*.sqlite3
+
+# =========================
+# Test / coverage
+# =========================
+coverage/
+frontend/coverage/
+
+# =========================
+# Temporary files
+# =========================
+*.tmp
+*.temp
+*.swp
+*.swo
+
+AGENTS.md
+docs/implementation-checklist.md
