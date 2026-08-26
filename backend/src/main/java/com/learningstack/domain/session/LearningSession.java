@@ -34,4 +34,9 @@ public class LearningSession {
 	public SessionStatus getStatus() { return status; }
 	public Instant getCreatedAt() { return createdAt; }
 	public Instant getUpdatedAt() { return updatedAt; }
+
+	public LearningSession moveTo(Long conceptId, Instant changedAt) {
+		return new LearningSession(id, title, goal, rootConceptId, conceptId,
+				status, createdAt, changedAt);
+	}
 }

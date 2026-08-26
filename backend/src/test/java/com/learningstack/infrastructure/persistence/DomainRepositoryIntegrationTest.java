@@ -84,11 +84,15 @@ class DomainRepositoryIntegrationTest {
 				.singleElement()
 				.extracting(ConceptRelation::getId)
 				.isEqualTo(relation.getId());
-		assertThat(stackRepository.findAllBySessionIdOrderByStackOrder(session.getId()))
+		assertThat(stackRepository.findActiveBySessionIdOrderByStackOrder(session.getId()))
 				.extracting(LearningStackEntry::getConceptId)
 				.containsExactly(transaction.getId(), isolation.getId());
 		assertThat(actualPathEntry.getParentConceptId()).isEqualTo(acid.getId());
 		assertThat(actualPathEntry.getParentConceptId()).isNotEqualTo(relation.getSourceConceptId());
+		stackRepository.save(actualPathEntry.complete(now.plusSeconds(3)));
+		assertThat(stackRepository.findActiveBySessionIdOrderByStackOrder(session.getId()))
+				.extracting(LearningStackEntry::getConceptId)
+				.containsExactly(transaction.getId());
 		assertThat(bookmarkRepository.findBySessionIdAndConceptId(session.getId(), isolation.getId()))
 				.map(Bookmark::getId)
 				.contains(bookmark.getId());

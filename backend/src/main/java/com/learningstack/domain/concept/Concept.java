@@ -38,4 +38,17 @@ public class Concept {
 	public LearningDepth getRecommendedDepth() { return recommendedDepth; }
 	public ConceptStatus getStatus() { return status; }
 	public Instant getCreatedAt() { return createdAt; }
+
+	public Concept startLearning() {
+		return withStatus(ConceptStatus.LEARNING);
+	}
+
+	public Concept complete() {
+		return withStatus(ConceptStatus.COMPLETED);
+	}
+
+	private Concept withStatus(ConceptStatus newStatus) {
+		return new Concept(id, sessionId, name, summary, description, importance,
+				recommendedDepth, newStatus, createdAt);
+	}
 }

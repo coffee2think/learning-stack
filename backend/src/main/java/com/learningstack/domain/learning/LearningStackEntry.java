@@ -34,4 +34,12 @@ public class LearningStackEntry {
 	public int getStackOrder() { return stackOrder; }
 	public Instant getEnteredAt() { return enteredAt; }
 	public Instant getCompletedAt() { return completedAt; }
+
+	public LearningStackEntry complete(Instant completedAt) {
+		if (this.completedAt != null) {
+			throw new IllegalStateException("LearningStackEntry is already completed");
+		}
+		return new LearningStackEntry(id, sessionId, conceptId, parentConceptId,
+				stackOrder, enteredAt, Objects.requireNonNull(completedAt));
+	}
 }

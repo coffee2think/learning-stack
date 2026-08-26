@@ -30,8 +30,8 @@ public class LearningStackEntryRepositoryAdapter implements LearningStackEntryRe
 	}
 
 	@Override
-	public List<LearningStackEntry> findAllBySessionIdOrderByStackOrder(Long sessionId) {
-		return repository.findAllBySessionIdOrderByStackOrderAsc(sessionId).stream()
+	public List<LearningStackEntry> findActiveBySessionIdOrderByStackOrder(Long sessionId) {
+		return repository.findAllBySessionIdAndCompletedAtIsNullOrderByStackOrderAsc(sessionId).stream()
 				.map(LearningStackEntryJpaEntity::toDomain)
 				.toList();
 	}

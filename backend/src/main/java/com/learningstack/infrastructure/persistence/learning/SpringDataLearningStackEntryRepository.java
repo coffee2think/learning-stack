@@ -7,5 +7,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface SpringDataLearningStackEntryRepository
 		extends JpaRepository<LearningStackEntryJpaEntity, Long> {
 
-	List<LearningStackEntryJpaEntity> findAllBySessionIdOrderByStackOrderAsc(Long sessionId);
+	List<LearningStackEntryJpaEntity> findAllBySessionIdAndCompletedAtIsNullOrderByStackOrderAsc(Long sessionId);
 }
